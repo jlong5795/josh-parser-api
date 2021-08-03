@@ -24,6 +24,7 @@ module.exports = {
       max: 10
     },
     migrations: {
+      directory: './database/migrations',
       tableName: 'knex_migrations'
     }
   }
