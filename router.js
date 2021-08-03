@@ -47,8 +47,9 @@ router.get("/cleaning", async (req, res) => {
             nicotine: '',
           };
 
-          items.forEach((item) => {
-            aggregate.nicotine += item.nicotine + ',';
+          items.forEach((item, index) => {
+            if (index == items.length - 1) return aggregate.nicotine += item.nicotine;
+            return aggregate.nicotine += item.nicotine + ',';
           });
           if (aggregate.nicotine.length > 0) {
             await Juices.addCleaned(aggregate);
