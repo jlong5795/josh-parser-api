@@ -27,7 +27,7 @@ module.exports = {
       directory: './database/migrations',
       tableName: 'knex_migrations'
     },
-    ssl:true
+    ssl: { rejectUnauthorized: false }
   }
 
 };
