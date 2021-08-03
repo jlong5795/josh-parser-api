@@ -7,7 +7,6 @@ const server = express();
 // middleware
 server.use(express.json());
 server.use(cors());
-server.use(helmet());
 
 // routes
 server.use('/data', router);
