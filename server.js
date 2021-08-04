@@ -6,7 +6,12 @@ const server = express();
 
 // middleware
 server.use(express.json());
-server.use(cors());
+server.use(cors({
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+  }));
 
 // routes
 server.use('/data', router);
