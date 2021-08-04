@@ -66,13 +66,14 @@ router.get("/cleaning", async (req, res) => {
 
 router.post("/submit", async (req, res) => {
   try {
-    req.body.forEach(async (juice) => {
-        if (juice) {
-            await Juices.add(juice);
+    // req.body.forEach(async (juice) => {
+    //     if (juice) {
+    //         await Juices.add(juice);
 
-        }
-    });
+    //     }
+    // });
 
+    Juices.addBatch(req.body)
     res.status(201).send("Successfully uploaded");
   } catch (error) {
     res.status(500).send("Error of some kind");

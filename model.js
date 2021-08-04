@@ -1,3 +1,4 @@
+const knex = require('knex');
 const db = require('./database/dbconfig');
 
 const add = async (juice) => {
@@ -37,8 +38,14 @@ const getCleaned = () => {
     return db('cleaned').select('brand', 'flavor', 'size', 'nicotine');
 }
 
+const addBatch = (batch) => {
+    return knex.batchInsert('juices', batch, 30)
+    .then(response => { return {status: 201, message: 'Batch insert ok'}})
+    .catch(error => { return { status: 500, message: 'insert failed', error}})
+}
 module.exports = {
     add,
+    addBatch,
     getAll,
     getAllBrands,
     getAllFlavors,
