@@ -4,14 +4,9 @@ const router = require('./router');
 
 const server = express();
 
-let whitelist = ['https://optimistic-torvalds-d28ab6.netlify.app/', 'https://netlify.app/']
-let corsOptions = {
-    origin: whitelist
-}
-
 // middleware
 server.use(express.json());
-server.use(cors(corsOptions));
+server.use(cors());
 
 // routes
 server.use('/data', router);
